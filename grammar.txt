@@ -1,0 +1,39 @@
+<Sentence> ::= <AffirmativeSentence> | <NegativeSentence> | <Question> | <CompoundSentence>
+
+/* Утвердительные предложения */
+<AffirmativeSentence> ::= <Subject> "had" "been" <Verb-ing> <Object>? <Adverbial>*
+
+/* Отрицательные предложения */
+<NegativeSentence>    ::= <Subject> <HadNotBeen> <Verb-ing> <Object>? <Adverbial>*
+<HadNotBeen>          ::= "had" "not" "been" | "hadn't" "been"
+
+/* Вопросы */
+<Question>            ::= <YesNoQuestion> | <WhQuestion>
+<YesNoQuestion>       ::= "Had" <Subject> "been" <Verb-ing> <Object>? <Adverbial>* "?"
+<WhQuestion>          ::= <WhWord> "had" <Subject> "been" <Verb-ing> <Object>? <Adverbial>* "?"
+<WhWord>              ::= "What" | "Where" | "When" | "Why" | "How"
+
+/* Составные предложения */
+<CompoundSentence>    ::= <AffirmativeSentence> <Conjunction> <AffirmativeSentence> | <CompoundSentence> <Conjunction> <AffirmativeSentence> | <AffirmativeSentence> <Conjunction> <CompoundSentence>
+<Conjunction>         ::= "and" | "but" | "while" | "or"
+
+/* Обстоятельства */
+<Adverbial>           ::= <Adverb> | <PrepositionalPhrase> | <Demonstrative>
+<Adverb>              ::= "already" | "just" | "still" | "recently" | "all day"
+<PrepositionalPhrase> ::= <Preposition> <NounPhrase>
+<Preposition>         ::= "in" | "on" | "at" | "by" | "with" | "before" | "since" | "during"
+
+/* Добавлены указательные слова */
+<Demonstrative>       ::= "this" | "that" | "these" | "those"
+
+/* Субъекты и объекты */
+<Subject>             ::= <NounPhrase> | <Pronoun>
+<NounPhrase>          ::= <Demonstrative>? <Article>? <Adjective>* <Noun> ("and" <Adjective>* <Noun>)*
+<Object>              ::= <NounPhrase> | <PrepositionalPhrase>
+
+/* Словарик */
+<Article>             ::= "the" | "a" | "an"
+<Pronoun>             ::= "I" | "you" | "he" | "she" | "it" | "we" | "they"
+<Verb-ing>            ::= "working" | "playing" | "studying" | "running" | "cooking" | "sleeping" | "talking"
+<Adjective>           ::= "tired" | "happy" | "busy" | "quiet" | "hungry"
+<Noun>                ::= "music" | "car" | "room" | "friend" | "meal" | "game" | "home"
